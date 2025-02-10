@@ -14,22 +14,27 @@ void insertsort(int start, int end, vector<int>& arr, long long int& keycomps) {
     }
 }
 
+void merge(vector<int>& arr, long long int& keycomps, int start, int end, int mid) {
+    vector<int> v1(arr.begin()+start, arr.begin()+mid+1);
+    vector<int> v2(arr.begin()+mid+1, arr.begin()+end+1);
+    int s1 = v1.size(), s2 = v2.size();
+    int n1=0, n2=0, i=start;
+    for (;n1<s1&&n2<s2;i++) {
+        keycomps++;
+        if (v1[n1] < v2[n2]) arr[i] = v1[n1++];
+        else arr[i] = v2[n2++];
+    }
+    for (;n1<s1;i++,n1++) arr[i] = v1[n1];
+    for (;n2<s2;i++,n2++) arr[i] = v2[n2];
+}
+
 void mergesort(int start, int end, vector<int>& arr, long long int& keycomps) {
     if (start >= end) return;
     int mid = (start+end)/2;
     mergesort(start, mid, arr, keycomps);
     mergesort(mid+1, end, arr, keycomps);
     // do merge
-    int m = mid+1;
-    for (int n=start;n<=mid && m<=end;n++) {
-        keycomps++;
-        if (arr[n]<=arr[m]) continue;
-        // shift forward
-        int t = arr[m];
-        for (int i=m;i>n;i--) arr[i] = arr[i-1];
-        arr[n] = t;
-        mid++;m++;
-    }
+    merge(arr, keycomps, start, end, mid);
 }
 
 void hybridsort(int start, int end, int& s, vector<int>& arr, long long int& keycomps) {
@@ -43,14 +48,5 @@ void hybridsort(int start, int end, int& s, vector<int>& arr, long long int& key
     hybridsort(start, mid, s, arr, keycomps);
     hybridsort(mid+1, end, s, arr, keycomps);
     // do merge
-    int m = mid+1;
-    for (int n=start;n<=mid && m<=end;n++) {
-        keycomps++;
-        if (arr[n]<=arr[m]) continue;
-        // shift forward
-        int t = arr[m];
-        for (int i=m;i>n;i--) arr[i] = arr[i-1];
-        arr[n] = t;
-        mid++;m++;
-    }
+    merge(arr, keycomps, start, end, mid);
 }
