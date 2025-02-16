@@ -40,7 +40,7 @@ int main() {
 
     // then, we test various values of size.
     ofstream aTest("test_a.csv");
-    aTest << "a,hybrid1,hcomps1,merge1,mcomps1,hybrid2,hcomps2,merge2,mcomps2,hybrid3,hcomps3,merge3,mcomps3,hybrid4,hcomps4,merge4,mcomps4,hybrid5,hcomps5,merge5,mcomps5\n";
+    aTest << "a,hybrid1,hcomps1,merge1,mcomps1,hybrid2,hcomps2,merge2,mcomps2,hybrid3,hcomps3,merge3,mcomps3,hybrid4,hcomps4,merge4,mcomps4,hybrid5,hcomps5,merge5,mcomps5,\n";
     for (int i=1000;i<=10000000;i*=10) {
         string ss = to_string(i) + ",";
         printf("%d ",i);
@@ -68,10 +68,10 @@ int main() {
     aTest.close();
     */
     // test varying both
-    ofstream xTest("test_x.csv");
+    ofstream xTest("test_x3.csv");
     xTest << "s,a,run1,comps1,run2,comps2,run3,comps3,run4,comps4,run5,comps5,\n";
-    for (int s=50;s<=90;s+=5) {
-        for (int i=1000;i<=10000000;i*=10) {
+    for (int s=55;s<=90;s+=1) {
+        for (int i=1000;i<=10000000;i*=2.1544) {
             printf("%d,%d ",s,i);
             string ss = to_string(s) + "," + to_string(i) + ",";
             for (int j=0;j<REPEATS;j++) {
