@@ -70,7 +70,7 @@ int main() {
     // test varying both
     ofstream xTest("test_x3.csv");
     xTest << "s,a,run1,comps1,run2,comps2,run3,comps3,run4,comps4,run5,comps5,\n";
-    for (int s=55;s<=90;s+=1) {
+    for (int s=20;s<=120;s+=1) {
         for (int i=1000;i<=10000000;i*=2.1544) {
             printf("%d,%d ",s,i);
             string ss = to_string(s) + "," + to_string(i) + ",";
