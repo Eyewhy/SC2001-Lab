@@ -15,10 +15,10 @@ int main() {
     long long int keycomps;
     int ARR_SIZE = 100000;
     int S_MAX = 128;
-    int S_TEST = 64;
+    int S_TEST = 25;
     int REPEATS = 5;
-    /*
     // first, we test various values of s
+    /*
     ofstream sTest("test_s.csv");
     sTest << "s,run1,comps1,run2,comps2,run3,comps3,run4,comps4,run5,comps5,\n";
     for (int s=2;s<=S_MAX;s++) {
@@ -37,9 +37,9 @@ int main() {
         sTest << ss + "\n";
     }
     sTest.close();
-
+    */
     // then, we test various values of size.
-    ofstream aTest("test_a.csv");
+    ofstream aTest("test_a3.csv");
     aTest << "a,hybrid1,hcomps1,merge1,mcomps1,hybrid2,hcomps2,merge2,mcomps2,hybrid3,hcomps3,merge3,mcomps3,hybrid4,hcomps4,merge4,mcomps4,hybrid5,hcomps5,merge5,mcomps5,\n";
     for (int i=1000;i<=10000000;i*=10) {
         string ss = to_string(i) + ",";
@@ -66,11 +66,11 @@ int main() {
         aTest << ss + "\n";
     }
     aTest.close();
-    */
+    /*
     // test varying both
     ofstream xTest("test_x3.csv");
     xTest << "s,a,run1,comps1,run2,comps2,run3,comps3,run4,comps4,run5,comps5,\n";
-    for (int s=20;s<=120;s+=1) {
+    for (int s=2;s<=120;s+=1) {
         for (int i=1000;i<=10000000;i*=2.1544) {
             printf("%d,%d ",s,i);
             string ss = to_string(s) + "," + to_string(i) + ",";
@@ -104,7 +104,7 @@ int main() {
                 if (j%2) {
                     mergesort(0,i-1,b,keycomps);
                 } else {
-                    insertsort(0,i-1,S_TEST,b,keycomps);
+                    insertsort(0,i-1,b,keycomps);
                 }
                 auto stop = high_resolution_clock::now();
                 duration<double, std::milli> ms = stop - start;
@@ -114,4 +114,5 @@ int main() {
         iTest << ss + "\n";
     }
     iTest.close();
+    */
 }
