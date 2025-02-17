@@ -87,4 +87,31 @@ int main() {
             xTest << ss + "\n";
         }
     }
+    ofstream iTest("test_i.csv");
+    iTest << "i,insert1,icomps1,merge1,mcomps1,insert2,icomps2,merge2,mcomps2,insert3,icomps3,merge3,mcomps3,insert4,icomps4,merge4,mcomps4,insert5,icomps5,merge5,mcomps5,\n";
+    for (int i=2;i<=1000;i++) {
+        string ss = to_string(i) + ",";
+        printf("%d ",i);
+        for (int j=0;j<REPEATS;j++) {
+            vector<int> a = randomArray(i);
+            for (int j=0;j<2;j++) {
+                // copy the array
+                vector<int> b = a;
+                keycomps = 0;
+                // start the timer
+                auto start = high_resolution_clock::now();
+
+                if (j%2) {
+                    mergesort(0,i-1,b,keycomps);
+                } else {
+                    insertsort(0,i-1,S_TEST,b,keycomps);
+                }
+                auto stop = high_resolution_clock::now();
+                duration<double, std::milli> ms = stop - start;
+                ss += to_string(ms.count()) + "," + to_string(keycomps) + ",";
+            }
+        }
+        iTest << ss + "\n";
+    }
+    iTest.close();
 }
