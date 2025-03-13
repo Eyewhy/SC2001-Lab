@@ -12,6 +12,7 @@ using namespace std;
 int REPEATS = 5;
 
 int main() {
+    srand(0);
     /* test: 
     vector<vector<int>> v = {
         {0,4,2,6,8},
@@ -37,12 +38,12 @@ int main() {
     }
     test << "\n";
     // vary size of graph
-    for (int i=10;i<=10000;i*=2.1544) {
+    for (int i=500;i<=10000;i+=500) {
         printf("i:%d ",i);
         string ss = to_string(i);
         for (int j=0;j<REPEATS;j++) {
             // generate with i*i/4 edges
-            vector<vector<int>> v = randomGraph(i,i*4);
+            vector<vector<int>> v = randomGraph(i,i*10);
             auto v2 = matrixToList(v);
 
             auto start = high_resolution_clock::now();
@@ -60,20 +61,20 @@ int main() {
         test << ss + "\n";
     }
     test.close();
+
     // vary number of edges
-    /*
     ofstream test2("test_e.csv");
     test2 << "e";
     for (int i=1;i<=REPEATS;i++) {
         test2 << ",a" << i << ",q" << i;
     }
     test2 << "\n";
-    for (int i=10;i<1000000;i*=2.1544) {
+    for (int i=5000;i<100000;i+=5000) {
         printf("e:%d ",i);
         string ss = to_string(i);
         for (int j=0;j<REPEATS;j++) {
             // generate with i*i/4 edges
-            vector<vector<int>> v = randomGraph(2000,i);
+            vector<vector<int>> v = randomGraph(1000,i);
             auto v2 = matrixToList(v);
 
             auto start = high_resolution_clock::now();
@@ -99,12 +100,12 @@ int main() {
         test3 << ",a" << i << ",q" << i;
     }
     test3 << "\n";
-    for (int i=10;i<10000;i*=2.1544) {
+    for (int i=500;i<=10000;i+=500) {
         printf("e:%d ",i);
         string ss = to_string(i);
         for (int j=0;j<REPEATS;j++) {
             // generate with i*i/4 edges
-            vector<vector<int>> v = randomGraph(i,40);
+            vector<vector<int>> v = randomGraph(i,5000);
             auto v2 = matrixToList(v);
 
             auto start = high_resolution_clock::now();
@@ -122,6 +123,4 @@ int main() {
         test3 << ss + "\n";
     }
     test3.close();
-
-    */
 }

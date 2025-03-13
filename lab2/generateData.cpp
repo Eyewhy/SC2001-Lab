@@ -15,7 +15,6 @@ int RANDMAX = 100;
  * @param edges number of edges
  */
 vector<vector<int>> randomGraph(int size, int edges, unsigned int seed=time(NULL)) {
-    srand(seed);
     vector<vector<int>> v(size, vector<int>(size, INT_MAX));
     // generate i edges
     for (int i=0;i<edges;i++) {
