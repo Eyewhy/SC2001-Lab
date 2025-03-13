@@ -29,7 +29,7 @@ int main() {
     printf("x:%d y:%d",x,y);
     */
 
-    /*
+    
     ofstream test("test.csv");
     test << "i";
     for (int i=1;i<=REPEATS;i++) {
@@ -37,12 +37,12 @@ int main() {
     }
     test << "\n";
     // vary size of graph
-    for (int i=100;i<=10000;i*=2.1544) {
+    for (int i=10;i<=10000;i*=2.1544) {
         printf("i:%d ",i);
         string ss = to_string(i);
         for (int j=0;j<REPEATS;j++) {
             // generate with i*i/4 edges
-            vector<vector<int>> v = randomGraph(i,i*10);
+            vector<vector<int>> v = randomGraph(i,i*4);
             auto v2 = matrixToList(v);
 
             auto start = high_resolution_clock::now();
@@ -61,6 +61,7 @@ int main() {
     }
     test.close();
     // vary number of edges
+    /*
     ofstream test2("test_e.csv");
     test2 << "e";
     for (int i=1;i<=REPEATS;i++) {
@@ -90,7 +91,6 @@ int main() {
         test2 << ss + "\n";
     }
     test2.close();
-    */
     
     // vary number of vertices
     ofstream test3("test_v.csv");
@@ -122,4 +122,6 @@ int main() {
         test3 << ss + "\n";
     }
     test3.close();
+
+    */
 }
