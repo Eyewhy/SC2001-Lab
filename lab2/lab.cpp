@@ -31,7 +31,7 @@ int main() {
     */
 
     
-    ofstream test("test.csv");
+    ofstream test("test_high_e.csv");
     test << "i";
     for (int i=1;i<=REPEATS;i++) {
         test << ",a" << i << ",q" << i;
@@ -43,7 +43,7 @@ int main() {
         string ss = to_string(i);
         for (int j=0;j<REPEATS;j++) {
             // generate with i*i/4 edges
-            vector<vector<int>> v = randomGraph(i,i*10);
+            vector<vector<int>> v = randomGraph(i,i*i/4);
             auto v2 = matrixToList(v);
 
             auto start = high_resolution_clock::now();
@@ -61,7 +61,7 @@ int main() {
         test << ss + "\n";
     }
     test.close();
-
+    /*
     // vary number of edges
     ofstream test2("test_e.csv");
     test2 << "e";
@@ -123,4 +123,5 @@ int main() {
         test3 << ss + "\n";
     }
     test3.close();
+    */
 }
