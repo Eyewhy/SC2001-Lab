@@ -10,7 +10,7 @@ int RANDMAX = 100;
 /**
  * Generates Adjancey Matrix with undirected edges
  * Edges will be granted a random weight between 1 and 100.
- * Any edge that is not valid will be granted a weight of INTMAX.
+ * Any edge that is not valid will be granted a weight of INT_MAX.
  * @param size number of vertices
  * @param edges number of edges
  */
