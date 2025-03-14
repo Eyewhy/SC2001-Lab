@@ -3,6 +3,7 @@
 #include <iostream>
 #include <fstream>
 #include <string>
+#include <math.h>
 #include "generateData.cpp"
 #include "dijkstra.cpp"
 
@@ -31,7 +32,7 @@ int main() {
     */
 
     
-    ofstream test("test_high_e.csv");
+    ofstream test("test_log_e.csv");
     test << "i";
     for (int i=1;i<=REPEATS;i++) {
         test << ",a" << i << ",q" << i;
@@ -43,7 +44,7 @@ int main() {
         string ss = to_string(i);
         for (int j=0;j<REPEATS;j++) {
             // generate with i*i/4 edges
-            vector<vector<int>> v = randomGraph(i,i*i/4);
+            vector<vector<int>> v = randomGraph(i,i*log2(i)*10);
             auto v2 = matrixToList(v);
 
             auto start = high_resolution_clock::now();
